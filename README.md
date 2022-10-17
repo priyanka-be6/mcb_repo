@@ -1,6 +1,6 @@
 <b>Part-1</b></br>
 Instruction to follow</br>
-1.Copy mcb-demo project from mcb folder</br>
+1.Copy mcb-demo project from angular/mcb folder</br>
 2.Configure the host where the back end project is running.</br>
 &nbsp;&nbsp;2.1 Go to this path "mcb\src\environments\environment.ts"</br>
 &nbsp;&nbsp;2.2 Configure the host in the "HOST" key.</br>
