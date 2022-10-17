@@ -5,5 +5,3 @@
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  2.1 mvn clean</br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  2.2 mvn install</br>
  3.run the project(main class = McbLoginSecurityApplication.java) or run from jar(target folder)</br>
- 
- Refer postman collection for API Details
