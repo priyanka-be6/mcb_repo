@@ -1,0 +1,21 @@
+<div class="toolbar_container">
+  <mat-toolbar class="bg-white">
+      <mat-toolbar-row class="pr-4">
+        <img src="assets/images/mcb-logo.jpg"/>
+        <span class="example-icon" (click)="gotoDashboard()">{{ 'navbar.dashboard' | translate }}</span>
+        <span class="example-icon" (click)="createTransaction()">{{ 'navbar.form' | translate }}</span>
+        <span class="example-icon" (click)="viewTransactions()">{{ 'navbar.table' | translate }}</span>
+        <span class="example-spacer"></span>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="menu icon" [matMenuTriggerFor]="menu" >menu</mat-icon>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <span>{{this.Username}}</span>
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      </mat-toolbar-row>
+  </mat-toolbar>
+</div>

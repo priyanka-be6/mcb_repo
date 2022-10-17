@@ -1,0 +1,24 @@
+{
+  "global": {
+    "login": "Login",
+    "logout": "Logout",
+    "multiValueForm":"Multi Value Form"
+  },
+  "homepage": {
+    "title": "Mauritius Commercial Bank",
+    "view_transaction":"View Submitted Transactions",
+    "new_transaction":"New Transaction",
+    "submit_transaction":"Submitted Transactions"
+  },
+  "login": {
+    "description": "Account is locked since you have exceeded the number of trials.",
+    "username": "Username",
+    "password": "Password",
+    "invalid":"Invalid Credentials"
+  },
+  "navbar":{
+    "dashboard":"Dashboard",
+    "form":"Customer Form",
+    "table":"Table"
+  }
+}

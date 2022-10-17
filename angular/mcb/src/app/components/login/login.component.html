@@ -1,0 +1,26 @@
+<div class="container mt-5">
+    <form class="form-login" [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="text-center mb-4">
+            <h1 class="h3 mb-3 font-weight-normal">{{ 'homepage.title' | translate }}</h1>
+        </div>
+
+        <div class="form-label-group">
+            <input type="text" id="inputUsername" class="form-control" placeholder="{{ 'login.username' | translate }}" autofocus
+                   autocomplete="off" formControlName="username" required>
+            <label for="inputUsername">{{ 'login.username' | translate }}</label>
+            <div class="alert alert-danger mt-2" *ngIf="invalidUsername()"> {{ 'validations.username' | translate }}</div>
+        </div>
+
+        <div class="form-label-group">
+            <input type="password" id="inputPassword" class="form-control" placeholder="{{ 'login.password' | translate }}"
+                   autocomplete="off" formControlName="password" required>
+            <label for="inputPassword">{{ 'login.password' | translate }}</label>
+            <div class="alert alert-danger mt-2" *ngIf="invalidPassword()">{{ 'validations.password' | translate }}</div>
+        </div>
+        <div class="form-label-group">
+            <div class="alert alert-danger mt-2" *ngIf="invalidLogin">{{ 'login.description' | translate }}</div>
+            <div class="alert alert-danger mt-2" *ngIf="invalidCred">{{ 'login.invalid' | translate }}</div>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="isDisableLoginButton()">{{ 'global.login' | translate }}</button>
+    </form>
+</div>

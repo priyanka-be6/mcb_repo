@@ -1,0 +1,197 @@
+<div class="">
+    <top_navbar></top_navbar>
+    <div id="trans_create_form" class="container pt-5">
+        <mat-card class="col-8 mx-auto text-center">
+            <h1 class="display-5 mb-5">Bank Transaction</h1>
+            <form [formGroup]="createTransForm" (submit)="submitForm()">
+              <!-- choosing the Customer Type -->
+              <mat-radio-group name="customerType" formControlName="customerType">
+                <mat-radio-button class="mx-2" value="new">
+                  New
+                </mat-radio-button>
+                <mat-radio-button class="mx-2" value="existing">
+                  Existing
+                </mat-radio-button>
+              </mat-radio-group>
+              <br />
+              <!-- Reference -->
+              <mat-form-field class="col-5 mt-3 mx-auto">
+                <mat-label>Reference</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="customerReference"
+                  placeholder="Reference"
+                />
+                <mat-error *ngIf="createTransForm.get('customerReference').hasError('required')">
+                    Reference is required
+                </mat-error>
+                <mat-error *ngIf="createTransForm.get('customerReference').hasError('pattern')">
+                  Invalid Reference
+              </mat-error>
+              </mat-form-field>
+              <!-- Customer Name -->
+              <mat-form-field class="col-5 mt-3 mx-auto">
+                <mat-label>Customer Number</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="customerNumber"
+                  placeholder="Customer Number"
+                  (change)="getCustDetails($event)"
+                />
+                <mat-error *ngIf="createTransForm.get('customerNumber').hasError('required')">
+                    Customer Number is required
+                </mat-error>
+              </mat-form-field>
+              <br />
+              <!-- Customer Name -->
+              <mat-form-field class="col-5 mt-3 mx-auto">
+                <mat-label>Customer Name</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="customerName"
+                  placeholder="Customer Name"
+                />
+                <mat-error *ngIf="createTransForm.get('customerName').hasError('required')">
+                    Customer Name is required
+                </mat-error>
+              </mat-form-field>
+              <!-- Customer Name -->
+              <mat-form-field class="col-5 mt-3 mx-auto">
+                <mat-label>Customer Address</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="customer_address"
+                  placeholder="Customer Name"
+                />
+                <mat-error *ngIf="createTransForm.get('customer_address').hasError('required')">
+                    Customer Address is required
+                </mat-error>
+              </mat-form-field>
+              <br />
+              <!-- phone number -->
+              <mat-form-field class="col-5 mb-2 mx-auto">
+                <mat-label>Phone</mat-label>
+                <input type="text" matInput formControlName="customerPhoneNumber" placeholder="Phone"/>
+                <mat-error *ngIf="createTransForm.get('customerPhoneNumber').hasError('required')">
+                  Phone is required
+                </mat-error>
+                <mat-error *ngIf="createTransForm.get('customerPhoneNumber').hasError('pattern')">
+                  Phone should be of numbers only
+               </mat-error>
+              </mat-form-field>
+              <!-- Transfer Amount -->
+              <mat-form-field class="col-5 mb-2 mx-auto">
+                <mat-label>Transfer Amount</mat-label>
+                <input type="text" matInput formControlName="customerTransferAmount" placeholder="Transfer Amount"/>
+                <mat-error *ngIf="createTransForm.get('customerTransferAmount').hasError('required')">
+                   Transfer Amount is required
+                </mat-error>
+                <mat-error *ngIf="createTransForm.get('customerTransferAmount').hasError('pattern')">
+                  Transfer Amount should be of numbers only
+               </mat-error>
+              </mat-form-field>
+              <br />
+              <!-- Transfer Currency -->
+              <mat-form-field class="col-5 mb-2 mx-auto">
+                <mat-label>Transfer Currency</mat-label>
+                <mat-select formControlName="customerTransferCurrency">
+                    <mat-option *ngFor="let c of currencyList" [value]="c">
+                      {{c}}
+                    </mat-option>
+                  </mat-select>
+                <mat-error *ngIf="createTransForm.get('customerTransferCurrency').hasError('required')">
+                   Transfer Currency is required
+                </mat-error>
+
+              </mat-form-field>
+            <!-- Beneficiary Bank -->
+            <mat-form-field class="col-5 mt-3 mx-auto">
+                <mat-label>Beneficiary Bank</mat-label>
+                <input
+                type="text"
+                matInput
+                formControlName="beneficiaryBank"
+                placeholder="Beneficiary Bank"
+                />
+                <mat-error *ngIf="createTransForm.get('beneficiaryBank').hasError('required')">
+                    Beneficiary Bank is required
+                </mat-error>
+                <mat-error *ngIf="createTransForm.get('beneficiaryBank').hasError('pattern')">
+                  Beneficiary Bank should be of characters only
+              </mat-error>
+            </mat-form-field>
+            <br />
+             <!-- Beneficiary Account Number -->
+             <mat-form-field class="col-5 mb-2 mx-auto">
+                <mat-label>Beneficiary Account Number</mat-label>
+                <input type="text" matInput formControlName="beneficiaryAccNo" placeholder="Beneficiary Account Number"/>
+                <mat-error *ngIf="createTransForm.get('beneficiaryAccNo').hasError('required')">
+                Beneficiary Account Number is required
+                </mat-error>
+            </mat-form-field>
+            <!-- Payment Details -->
+            <mat-form-field class="col-5 mt-3 mx-auto">
+                <mat-label>Payment Details</mat-label>
+                <input
+                type="text"
+                matInput
+                formControlName="paymentDetails"
+                placeholder="Payment Details"
+                />
+                <mat-error *ngIf="createTransForm.get('paymentDetails').hasError('required')">
+                    Payment Details is required
+                </mat-error>
+                <mat-error *ngIf="createTransForm.get('paymentDetails').hasError('pattern')">
+                  Payment Details should be of characters only
+                </mat-error>
+            </mat-form-field>
+            <br />
+           
+            <!-- Credit/Debit Card Details -->
+            <mat-form-field class="col-5 mb-2 mx-auto">
+                <mat-label>Credit/Debit Card Details</mat-label>
+                <input type="text" matInput formControlName="creditDebitCardDetails" placeholder="Credit/Debit Card Details"/>
+                <mat-error *ngIf="createTransForm.get('creditDebitCardDetails').hasError('required')">
+                    Credit/Debit Card Details is required
+                </mat-error>
+            </mat-form-field>
+            <!-- Region -->
+            <mat-form-field class="col-5 mb-2 mx-auto">
+                <mat-label>Region</mat-label>
+                <mat-select formControlName="region">
+                    <mat-option *ngFor="let r of regionList" [value]="r">
+                      {{r}}
+                    </mat-option>
+                  </mat-select>
+                <mat-error *ngIf="createTransForm.get('region').hasError('required')">
+                   Region is required
+                </mat-error>
+              </mat-form-field>
+              <br />
+              <button
+                (click)="resetForm()"
+                mat-flat-button
+                color="warn"
+                class="col-3 mt-2 mb-3 mr-3"
+              >
+                Reset
+              </button>
+              <button
+                [disabled]="createTransForm.invalid"
+                mat-flat-button
+                color="primary"
+                type="submit"
+                class="col-3 mt-2 mb-3"
+              >
+                Submit
+              </button>
+              <br />
+             
+            </form>
+          </mat-card>
+    </div>
+</div>
